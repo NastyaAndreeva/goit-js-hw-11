@@ -4,15 +4,21 @@ import Notiflix from 'notiflix';
 import generateImagesMarkup from "./js/generateImagesMarkup";
 import refs from "./js/refs";
 
-async function getAllImages() {
+async function generateMarkupUI() {
   try {
     const result = await API.getImages();
     const images = result.data.hits;
     generateImagesMarkup(images);
-
-    Notiflix.Notify.success(`Hooray! We found ${result.data.total} images.`);
+    
   } catch (error) {
     Notiflix.Notify.failure("We're sorry, but you've reached the end of search results.");
+  }
+  
+}
+
+function totalHitsNofitication(total){
+  if (total) {
+    Notiflix.Notify.success(`Hooray! We found ${total} images.`);
   }
   
 }
@@ -25,23 +31,31 @@ function onSearchInput(event){
 function onFormSubmit(event) {
   refs.gallery.innerHTML = "";
   event.preventDefault();
-  getAllImages();
-
+  generateMarkupUI();
+  API.getImages().then(({data}) => totalHitsNofitication(data.total))
 }
 
-function onGalleryScroll() {
-  if (refs.gallery.scrollTop + refs.gallery.clientHeight >= refs.gallery.scrollHeight) {
-    loadMore();
-  }
+function onObserver(entries) {
+  entries.forEach(entry => {
+    if (entry.intersectionRatio && API.params.q !== "") {
+      loadMore();
+    }
+  })
 }
 
 function loadMore(){
   API.params.page += 1;
-  getAllImages();
+  generateMarkupUI();
 }
+
+const options = {
+  rootMargin: "400px",
+};
+
+const observer = new IntersectionObserver(onObserver, options);
+observer.observe(refs.sentinel);
 
 refs.searchInput.addEventListener("input", onSearchInput);
 
 refs.searchForm.addEventListener("submit", onFormSubmit);
 
-refs.gallery.addEventListener('scroll', onGalleryScroll);
