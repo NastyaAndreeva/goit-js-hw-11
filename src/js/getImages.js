@@ -1,9 +1,11 @@
-import Notiflix from 'notiflix';
+import axios from 'axios';
 
-const axios = require('axios').default;
-const URL = "https://pixabay.com/api/";
-const API_KEY = "27223779-0e7ff1f3c9e6aed100241b5fd";
+const instance = axios.create({
+  baseURL: 'https://pixabay.com/api/'
+});
+
 const params = {
+  key: "27223779-0e7ff1f3c9e6aed100241b5fd",
   q: "",
   image_type: 'photo',
   orientation : 'horizontal',
@@ -14,15 +16,10 @@ const params = {
 
 async function getImages() {
   try {
-    const response = await axios.get(`${URL}?key=${API_KEY}`, {params});
-    if (response.data.hits === 0) {
-      return;
-    }
-    return response;
+    return await instance.get(``, {params});
   } catch (error) {
-    Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
-  }
-    
+    console.log(error);
+  }  
 }
 
 export default {params, getImages}

@@ -6,50 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Final Project</title>
     <link rel="stylesheet" href="css/common.css" />
-    <style>
-      .gallery {
-        display: flex;
-        flex-wrap: wrap;
-        width: 1260px;
-        justify-content: space-between;
-        margin: 0 auto;
-      }
-      form {
-        width: 400px;
-        color: #fff;
-      }
-
-      .header {
-        background-color: darkgreen;
-        height: 70px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 30px;
-      }
-
-      .info {
-        display: flex;
-        justify-content: space-between;
-        font-size: 14px;
-      }
-    </style>
+    <link rel="stylesheet" href="./css/modern-normalize.css">
+    <link rel="stylesheet" href="./css/styles.css">
   </head>
   <body>
     <div class="header">
-      <form class="search-form" id="search-form">
+      <form class="search-form" id="search-form"><div class="input-block">
         <input
-          type="text"
-          name="searchQuery"
-          autocomplete="off"
-          placeholder="Search images..."
-        />
-        <button type="submit">Search</button>
+        type="text"
+        name="searchQuery"
+        autocomplete="off"
+        placeholder="Search images..."
+      />
+      <button type="submit" class="search-btn"></button>
+      </div>
+        
       </form>
     </div>
-    <!-- Add gallery items to this list -->
-    <div class="gallery"></div>
+<div class="gallery"></div>
     <div id="sentinel"></div>
+    <div class="preloader"></div>
+    <button class="back-to-top hidden">
+      <svg xmlns="http://www.w3.org/2000/svg" class="back-to-top-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12" />
+      </svg>
+    </button>
     <script src="./index.js"></script>
+    <!-- <script src="./js/toTopBtn/index.js" type="module"></script> -->
   </body>
 </html>
