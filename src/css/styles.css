@@ -64,6 +64,7 @@ svg{
 
 .back-to-top {
   position: fixed;
+  z-index: 2;
   width: 32px;
   height: 32px;
   right: 7px;
