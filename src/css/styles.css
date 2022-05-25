@@ -80,10 +80,6 @@ svg{
   justify-content: center;
 }
 
-.back-to-top:hover {
-  opacity: 60%;
-}
-
 .hidden {
   opacity: 0%;
 }
