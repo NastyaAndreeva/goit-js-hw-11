@@ -72,10 +72,10 @@ svg{
   cursor: pointer;
   transition: opacity 0.5s;
   border-radius: 50%;
-  /* background-image: url("../images/toTopBtn.png");
+  background-image: url("../images/toTopBtn.png");
   background-repeat: no-repeat;
-  background-size: cover; */
-  background-color: green;
+  background-size: cover;
+  /* background-color: green; */
   cursor: pointer;
   display: flex;
   align-items: center;
