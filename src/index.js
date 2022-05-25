@@ -20,15 +20,11 @@ function totalHitsNofitication(total){
   if (total) {
     Notiflix.Notify.success(`Hooray! We found ${total} images.`);
   }
-  
-}
-
-function onSearchInput(event){
-  API.params.page = 1;
-  API.params.q = event.target.value;
 }
 
 function onFormSubmit(event) {
+  API.params.page = 1;
+  API.params.q = event.currentTarget.elements.searchQuery.value;
   refs.gallery.innerHTML = "";
   event.preventDefault();
   generateMarkupUI();
@@ -52,9 +48,9 @@ async function loadMore(){
     lightbox.refresh();
     refs.preloader.innerHTML = preloader();
     API.params.page += 1;
-      setTimeout(()=> {
-        generateMarkupUI();
-      }, 1500);   
+    setTimeout(()=>{
+      generateMarkupUI()}, 1000 );
+  
 }
 
 const options = {
@@ -83,8 +79,6 @@ function onScroll() {
     refs.backToTopButton.classList.add("hidden");
   }
 }
-
-refs.searchInput.addEventListener("input", onSearchInput);
 
 refs.searchForm.addEventListener("submit", onFormSubmit);
 
