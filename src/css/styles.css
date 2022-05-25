@@ -28,7 +28,6 @@ ul {
 .gallery {
   display: flex;
   flex-wrap: wrap;
-  /* width: 1260px; */
   padding-left: 50px;
   padding-right: 50px;
   justify-content: space-between;
@@ -73,7 +72,7 @@ svg{
   transition: opacity 0.5s;
   display: block;
   padding: 0;
-  color: rgb(7, 47, 47);
+  border-radius: 50%;
 }
 
 .back-to-top:hover {
@@ -87,8 +86,6 @@ svg{
 .back-to-top-icon {
   width: 2rem;
   height: 2rem;
-  /* color: #cad7df; */
-  fill: currentColor;
 }
 
 .search-btn {
