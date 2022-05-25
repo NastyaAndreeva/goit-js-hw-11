@@ -7,6 +7,7 @@ const instance = axios.create({
 });
 
 // instance.defaults.headers.common['Authorization'] = API_KEY;
+// Я пыталась настроить авторизацию через instance, но сервер ругался на CORS
 
 const params = {
   key: API_KEY,

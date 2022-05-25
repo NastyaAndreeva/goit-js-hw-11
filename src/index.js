@@ -29,7 +29,7 @@ function onFormSubmit(event) {
   event.preventDefault();
   generateMarkupUI();
   API.getImages().then(({data} = {}) => {
-    if (data.total === 0) {
+    if (data?.total === 0) {
       Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
       return;
     }
