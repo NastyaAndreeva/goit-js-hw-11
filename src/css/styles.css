@@ -70,6 +70,7 @@ svg{
   bottom: 15px;
   border: none;
   cursor: pointer;
+  opacity: 1;
   border-radius: 50%;
   background-image: url("../images/toTopBtn.png");
   background-repeat: no-repeat;
@@ -78,15 +79,15 @@ svg{
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: opacity 1s ease;
+}
+
+.back-to-top:hover{
+  opacity: 0.6;
 }
 
 .hidden {
-  opacity: 0%;
-}
-
-.back-to-top-icon {
-  width: 2rem;
-  height: 2rem;
+  opacity: 0;
 }
 
 .search-btn {

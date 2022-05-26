@@ -6,6 +6,8 @@ import refs from "./js/refs";
 import "simplelightbox/dist/simple-lightbox.min.css";
 import SimpleLightbox from "simplelightbox";
 import preloader from "./templates/preloader"
+import imgTpl from "./templates/card"
+
 
 let lightbox = null;
 
@@ -13,6 +15,8 @@ async function generateMarkupUI() {
     const result = await API.getImages();
     const images = result?.data?.hits;
     generateImagesMarkup(images);
+    console.log(imgTpl(images));
+    console.log(images);
     lightbox = new SimpleLightbox('.gallery a');
 }
 
