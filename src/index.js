@@ -15,8 +15,6 @@ async function generateMarkupUI() {
     const result = await API.getImages();
     const images = result?.data?.hits;
     generateImagesMarkup(images);
-    console.log(imgTpl(images));
-    console.log(images);
     lightbox = new SimpleLightbox('.gallery a');
 }
 
@@ -71,6 +69,7 @@ function scrollContainer(){
 };
 
 function goToTop (){
+  lightbox.refresh();
   document.body.scrollIntoView({
     behavior: "smooth"
   });
