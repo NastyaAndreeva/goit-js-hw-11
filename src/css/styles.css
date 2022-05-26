@@ -62,6 +62,10 @@ svg{
   display:inline-block;
 }
 
+.ptoto-card{
+  margin-bottom: 15px;
+}
+
 .back-to-top {
   position: fixed;
   width: 32px;
