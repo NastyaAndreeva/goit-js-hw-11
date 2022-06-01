@@ -6,10 +6,6 @@ const instance = axios.create({
   baseURL: BASE_URL,
 });
 
-// instance.defaults.headers.common['Authorization'] = API_KEY;
-// Я пыталась настроить авторизацию через instance, но сервер ругался на CORS
-// Ментор ответила, что pixabay не поддерживает такую возможность
-
 const params = {
   key: API_KEY,
   q: "",

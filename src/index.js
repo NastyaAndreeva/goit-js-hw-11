@@ -6,16 +6,15 @@ import refs from "./js/refs";
 import "simplelightbox/dist/simple-lightbox.min.css";
 import SimpleLightbox from "simplelightbox";
 import preloader from "./templates/preloader"
-import imgTpl from "./templates/card"
 
 
-let lightbox = null;
+let lightbox = new SimpleLightbox('.gallery a');
 
 async function generateMarkupUI() {
     const result = await API.getImages();
     const images = result?.data?.hits;
     generateImagesMarkup(images);
-    lightbox = new SimpleLightbox('.gallery a');
+    lightbox.refresh();
 }
 
 function totalHitsNofitication(total){
@@ -40,6 +39,7 @@ function onFormSubmit(event) {
 
 function onObserver(entries) {
   entries.forEach(entry => {
+    console.log(entry.intersectionRatio && API.params.q !== "");
     if (entry.intersectionRatio && API.params.q !== "") {
       loadMore();
     }
@@ -88,4 +88,3 @@ refs.searchForm.addEventListener("submit", onFormSubmit);
 document.addEventListener("scroll", onScroll);
 
 refs.backToTopButton.addEventListener("click", goToTop);
-
